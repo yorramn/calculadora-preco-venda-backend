@@ -11,11 +11,11 @@ class Cors
     /**
      * @param $request
      * @param Closure $next
-     * @return void
+     * @return mixed
      */
-    public function handle($request, Closure $next): void
+    public function handle($request, Closure $next): mixed
     {
-        $response = $next($request)
+        return $next($request)
             ->header('Access-Control-Allow-Origin', '*')
             ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')
             ->header('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
