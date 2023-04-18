@@ -1,0 +1,22 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Categorias",
+        "contact": "yorramn.dev@gmail.com",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/categories": {
+            "get": {
+                "summary": "Retorna a lista de categorias",
+                "description": "Este endpoint retornará a lista completa de categorias",
+                "operationId": "1224561a00edc53b4fc05b22bd7f04fa",
+                "responses": {
+                    "200": {
+                        "description": "Retorna JSON com status 200"
+                    }
+                }
+            }
+        }
+    }
+}
