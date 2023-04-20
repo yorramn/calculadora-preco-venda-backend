@@ -17,21 +17,24 @@ Route::prefix('auth')
     });
 
 
-    Route::prefix('categories')
-        ->as('categories:categories')
-        ->apiResource('categories', \App\Http\Controllers\Api\Category\CategoryController::class);
+Route::middleware(['auth:sanctum'])
+    ->group(function () {
+        Route::prefix('categories')
+            ->as('categories:categories')
+            ->apiResource('categories', \App\Http\Controllers\Api\Category\CategoryController::class);
 
-    Route::prefix('quotes')
-        ->as('quotes:quotes')
-        ->apiResource('quotes', \App\Http\Controllers\Api\Quote\QuoteController::class);
+        Route::prefix('quotes')
+            ->as('quotes:quotes')
+            ->apiResource('quotes', \App\Http\Controllers\Api\Quote\QuoteController::class);
 
-    Route::put('quotes/{id}/change-status', [\App\Http\Controllers\Api\Quote\QuoteController::class, 'change_status']);
+        Route::put('quotes/{id}/change-status', [\App\Http\Controllers\Api\Quote\QuoteController::class, 'change_status']);
 
-    Route::prefix('products')
-        ->as('products:products')
-        ->controller(\App\Http\Controllers\Api\Product\ProductController::class)
-        ->group(function () {
-           Route::get('', 'index');
-           Route::post('', 'store');
-        });
+        Route::prefix('products')
+            ->as('products:products')
+            ->controller(\App\Http\Controllers\Api\Product\ProductController::class)
+            ->group(function () {
+                Route::get('', 'index');
+                Route::post('', 'store');
+            });
+    });
 
