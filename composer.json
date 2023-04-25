@@ -6,7 +6,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "algolia/algoliasearch-client-php": "^3.3",
         "bensampo/laravel-enum": "^6.3",
         "guzzlehttp/guzzle": "^7.2",
         "juststeveking/http-status-code": "3.0.1",
