@@ -16,7 +16,7 @@ use Laravel\Scout\Searchable;
 
 class Category extends Model
 {
-    use HasFactory, SoftDeletes, Searchable;
+    use HasFactory, SoftDeletes;
 
     protected $with = ['owner', 'children', 'parent'];
 
