@@ -18,7 +18,7 @@ use Laravel\Scout\Searchable;
 
 class Product extends Model
 {
-    use HasFactory, SoftDeletes, Searchable;
+    use HasFactory, SoftDeletes;
 
     protected $with = ['owner', 'category', 'images'];
 

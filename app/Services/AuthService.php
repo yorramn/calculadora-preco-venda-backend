@@ -48,7 +48,7 @@ class AuthService
             'error' => false,
             'message' => 'Login',
             'data' => [
-                'user' => new RegisterResource($user),
+                'user' => $user,
                 'token' => $token
             ],
         ], Http::OK());
