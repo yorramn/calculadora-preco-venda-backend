@@ -31,6 +31,10 @@ Route::middleware(['auth:sanctum'])
             ->as('plans:plans')
             ->apiResource('plans', \App\Http\Controllers\Api\Plan\PlanController::class);
 
+        Route::prefix('assign-plan')
+            ->as('assign-plan:assign-plan')
+            ->apiResource('assign-plan', \App\Http\Controllers\Api\Plan\AssignPlanController::class);
+
         Route::put('quotes/{id}/change-status', [\App\Http\Controllers\Api\Quote\QuoteController::class, 'change_status']);
 
         Route::prefix('products')

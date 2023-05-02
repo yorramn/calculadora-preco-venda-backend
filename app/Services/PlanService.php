@@ -41,4 +41,8 @@ class PlanService implements BaseServiceApi
     {
         // TODO: Implement delete() method.
     }
+
+    public function assignPlanToUser()  {
+        return $this->planRepository->assignPlanToUser(auth()->user());
+    }
 }
