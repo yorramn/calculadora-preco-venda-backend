@@ -23,7 +23,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'slug' => 'required|string',
+            'slug' => 'string',
             'parent_id' => 'sometimes|exists:categories'
         ];
     }

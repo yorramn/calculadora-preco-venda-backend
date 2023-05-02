@@ -12,6 +12,9 @@ Route::prefix('auth')
     ->controller(\App\Http\Controllers\Api\Auth\AuthController::class)
     ->group(function () {
         Route::post('register', 'register');
+        Route::post('reset-password', 'resetPassword'); //Envia o email de troca de senha
+        Route::post('reset-password-send/{token}/verify-token', 'resetPasswordVerifyToken'); // verifica o token
+        Route::post('reset-password-send', 'resetPasswordSend'); // Envia de fato a troca de senha
         Route::post('login', 'login');
         Route::post('logout', 'logout')->middleware('auth:sanctum');
     });

@@ -11,7 +11,7 @@ class PaymentService
             'Accept' => 'application/json',
             'Content-Type' =>  'application/json',
             'Authorization' => 'Bearer '.env('PAGSEGURO_TOKEN')
-        ])->post(env('PAGSEGURO_SANDBOX_URL').'/orders', $this->setPayloadToRequest())->json();
+        ])->post(env('PAGSEGURO_SANDBOX_URL').'/orders', $this->setPayloadToRequest());
         dd($response);
     }
 
@@ -68,8 +68,8 @@ class PaymentService
                         "capture" => true,
                         "card" => [
                             'number' => '4111111111111111',
-                            'exp_month' => '03',
-                            'exp_year' => '2026',
+                            'exp_month' => '12',
+                            'exp_year' => '2030',
                             "security_code" =>  "123",
                             "holder" => [
                                 "name" => "Jose da Silva"

@@ -73,7 +73,7 @@ class CategoryController extends Controller
         }
         return new JsonResponse([
             'status' => Http::CREATED(),
-            'data' => new CategoryResource($response),
+            'data' => CategoryResource::collection($this->categoryService->findAll(null)),
             'message' => 'Dados encontrados.'
         ], Http::CREATED());
     }

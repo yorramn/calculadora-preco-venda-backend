@@ -6,6 +6,7 @@ use App\Models\Category\Category;
 use App\Repositories\Category\CategoryRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CategoryService
 {
@@ -32,6 +33,7 @@ class CategoryService
     public function store(array $data): \Illuminate\Database\Eloquent\Model
     {
         $data['user_id'] = Auth::user()->id;
+        $data['slug'] = Str::slug($data['name']);
         return $this->categoryRepository->create($data);
     }
 
