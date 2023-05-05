@@ -23,7 +23,7 @@ class PlanService implements BaseServiceApi
 
     public function findAll(?array $fields, ?int $perPage, ?string $orderBy = null): \Illuminate\Contracts\Pagination\LengthAwarePaginator|Collection
     {
-        return Plan::all();
+        return Plan::query()->orderBy('price')->get();
     }
 
     public function store(array $data): Model

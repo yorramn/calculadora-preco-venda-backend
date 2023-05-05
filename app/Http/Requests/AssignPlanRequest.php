@@ -24,7 +24,7 @@ class AssignPlanRequest extends FormRequest
         return [
             'plan_id' => 'required|exists:plans,id',
             'address' => 'required|string',
-            'number' => 'required|string',
+            'number' => 'required|integer',
             'complement' => 'sometimes',
             'district' => 'required|string',
             'cep' => 'required|string',
