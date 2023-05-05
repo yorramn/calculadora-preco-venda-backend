@@ -12,14 +12,18 @@ class PlanService implements BaseServiceApi
     private PlanRepository $planRepository;
 
 
-    public function __construct()
+    public function __construct(PlanRepository $planRepository)
     {
-        $this->planRepository = new PlanRepository(new Plan());
+        $this->planRepository = $planRepository;
+    }
+
+    public function findById(int $id) : Model {
+        return Plan::query()->find($id);
     }
 
     public function findAll(?array $fields, ?int $perPage, ?string $orderBy = null): \Illuminate\Contracts\Pagination\LengthAwarePaginator|Collection
     {
-        return $this->planRepository->findAll($fields, $perPage, $orderBy);
+        return Plan::all();
     }
 
     public function store(array $data): Model
@@ -42,7 +46,7 @@ class PlanService implements BaseServiceApi
         // TODO: Implement delete() method.
     }
 
-    public function assignPlanToUser()  {
-        return $this->planRepository->assignPlanToUser(auth()->user());
+    public function assignPlanToUser(array $data)  {
+        return $this->planRepository->assignPlanToUser($data);
     }
 }
