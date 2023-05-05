@@ -13,8 +13,10 @@
         "laravel/sanctum": "^3.2",
         "laravel/scout": "^10.0",
         "laravel/tinker": "^2.8",
+        "michael/laravelpagseguro": "dev-master",
         "spatie/laravel-permission": "^5.9",
-        "zircote/swagger-php": "^4.7"
+        "zircote/swagger-php": "^4.7",
+      "ext-curl": "*"
     },
     "require-dev": {
         "doctrine/dbal": "^3.6",
@@ -66,7 +68,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
         }
     },
     "minimum-stability": "stable",

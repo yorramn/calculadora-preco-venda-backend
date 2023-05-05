@@ -22,6 +22,10 @@ Route::prefix('auth')
 
 Route::middleware(['auth:sanctum'])
     ->group(function () {
+        Route::prefix('users')
+            ->as('users:users')
+            ->apiResource('users', \App\Http\Controllers\Api\User\UserController::class);
+
         Route::prefix('categories')
             ->as('categories:categories')
             ->apiResource('categories', \App\Http\Controllers\Api\Category\CategoryController::class);

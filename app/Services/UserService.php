@@ -15,6 +15,11 @@ class UserService
         $this->userRepository = new UserRepository(new User());
     }
 
+    public function findAll(?array $params) : \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+    {
+        return $this->userRepository->findAll($params, null, null);
+    }
+
     public function findByEmail(string $email) : Model|User {
         return $this->userRepository->findByEmail($email);
     }

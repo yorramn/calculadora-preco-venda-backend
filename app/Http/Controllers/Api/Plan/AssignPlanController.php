@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api\Plan;
 
 use App\Http\Controllers\Controller;
 use App\Services\PlanService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JustSteveKing\StatusCode\Http;
 
 class AssignPlanController extends Controller
 {
@@ -30,7 +32,11 @@ class AssignPlanController extends Controller
      */
     public function store()
     {
-        $this->planService->assignPlanToUser();
+        return new JsonResponse([
+            'status' => Http::OK(),
+            'data' => $this->planService->assignPlanToUser(),
+            'message' => 'Dados encontrados.'
+        ], Http::OK());
     }
 
     /**
