@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Plan\Plan;
 use App\Repositories\Plans\PlanRepository;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,7 +24,10 @@ class PlanService implements BaseServiceApi
 
     public function findAll(?array $fields, ?int $perPage, ?string $orderBy = null): \Illuminate\Contracts\Pagination\LengthAwarePaginator|Collection
     {
-        return Plan::query()->orderBy('price')->get();
+        $plan = auth()->user()->plan()->first();
+        return Plan::query()
+            ->when(isset($plan), fn(Builder $builder) => $builder->whereNot('id', $plan->id))
+            ->orderBy('price')->get();
     }
 
     public function store(array $data): Model
