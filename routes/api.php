@@ -19,6 +19,12 @@ Route::prefix('auth')
         Route::post('logout', 'logout')->middleware('auth:sanctum');
     });
 
+Route::prefix('pag-seguro-callback')
+    ->group(function () {
+        Route::post('', function (Request $request) {
+            $request->headers->set('host', 'http://localhost:80');
+        });
+    });
 
 Route::middleware(['auth:sanctum'])
     ->group(function () {

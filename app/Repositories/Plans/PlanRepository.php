@@ -63,14 +63,33 @@ class PlanRepository
                     'period' => $plan->type->key,
                     'finalDate' => $date,
                     'maxTotalAmount' => $plan->price,
-                ]
+                ],
+                'notification_urls' => 'http://localhost:80/ei_comece/public/api/pag-seguro-callback'
             ])
-            ->json();
+            ->body();
+
+        dd($response);
 
         if(!$response) return false;
 
         $user->plan()->associate($plan)->save();
+        $user->address()->updateOrCreate(
+            [
+                'user_id' => $user->id
+            ],
+            [
+                'cep' => $data['cep'],
+                'address' => $data['address'],
+                'complement' => $data['complement'],
+                'number' => $data['number'],
+                'district' => $data['district'],
+                'uf' => $data['uf'],
+                'locality' => $data['locality']
+            ]
+        );
+        $user->update(['code_plan' => $response['code']]);
         $response['link'] = $this->urlToResponse.$response['code'];
+        $response['user'] = $user;
         return $response;
     }
 }

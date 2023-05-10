@@ -40,7 +40,6 @@ class AssignPlanController extends Controller
                 'data' => null,
                 'message' => 'Erros encontrados.'
         ], Http::BAD_REQUEST());
-
         }
         return new JsonResponse([
             'status' => Http::OK(),
@@ -62,7 +61,7 @@ class AssignPlanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
     }
 
     /**

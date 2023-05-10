@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Plan\Plan;
+use App\Models\User\UserAdress;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,7 +19,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
-    protected $with = ['plan'];
+    protected $with = ['plan', 'address'];
 
     /**
      * The attributes that are mass assignable.
@@ -30,7 +31,8 @@ class User extends Authenticatable
         'social_name',
         'email',
         'password',
-        'plan_id'
+        'plan_id',
+        'code_plan'
     ];
 
     /**
@@ -54,5 +56,9 @@ class User extends Authenticatable
 
     public function plan () : BelongsTo {
         return $this->belongsTo(Plan::class,  'plan_id', 'id');
+    }
+
+    public function address() : HasOne {
+        return $this->hasOne(UserAdress::class);
     }
 }
